@@ -1,4 +1,4 @@
-<h1>{{title}}</h1>
+<h1>{{homeTitle}}</h1>
 <!-- ❶ 타이틀 영역 -->
 
 <!-- ❷ 검색어 영역  -->
@@ -31,12 +31,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><a href="/detail/">타이틀</a></td>
-        <td>작성자</td>
-        <td>9999</td>
-        <td>2022.12.15.</td>
-      </tr>
+      {{#each posts}}
+        <tr>
+          <td><a href="/detail/{{id}}">{{title}}</a></td>
+          <td>{{writer}}</td>
+          <td>{{hits}}</td>
+          <td>{{createdDt}}</td>
+        </tr>
+      {{/each}}
     </tbody>
   </table>
 </div>

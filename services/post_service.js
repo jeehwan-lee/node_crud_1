@@ -1,4 +1,4 @@
-const mysql = require("./db/db");
+const mysql = require("../db/db");
 
 async function writePost(post) {
   post.hits = 0;
@@ -17,20 +17,20 @@ async function writePost(post) {
   });
 }
 
-async function list(page, search) {
+const list = (page, search) => {
   const sql = "SELECT * FROM post";
 
   mysql.getConnection((err, connection) => {
     connection.query(sql, (err, result, fields) => {
       if (!err) {
-        console.log(result);
-        connection.release();
+        return result;
       } else {
         throw err;
       }
     });
+    connection.release();
   });
-}
+};
 
 module.exports = {
   list,
