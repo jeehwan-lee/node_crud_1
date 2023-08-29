@@ -35,7 +35,19 @@ app.get("/detail/:id", async (req, res) => {
   mysql.getConnection((err, connection) => {
     connection.query(sql, (err, result, fields) => {
       if (!err) {
-        res.render("detail", { title: "테스트 게시판" });
+      } else {
+        throw err;
+      }
+    });
+    connection.release();
+  });
+
+  const sql2 = `SELECT * FROM post where id = ${req.params.id}`;
+
+  mysql.getConnection((err, connection) => {
+    connection.query(sql2, (err, result, fields) => {
+      if (!err) {
+        res.render("detail", { title: "게시판", posts: result });
       } else {
         throw err;
       }
