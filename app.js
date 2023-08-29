@@ -23,9 +23,6 @@ app.get("/", (req, res) => {
     });
     connection.release();
   });
-
-  //res.render("home", { title: "게시판", response });
-  // console.log(posts);
 });
 
 app.get("/write", (req, res) => {
@@ -33,7 +30,18 @@ app.get("/write", (req, res) => {
 });
 
 app.get("/detail/:id", async (req, res) => {
-  res.render("detail", { title: "테스트 게시판" });
+  const sql = `UPDATE post SET hits='2' WHERE id = 1`;
+
+  mysql.getConnection((err, connection) => {
+    connection.query(sql, (err, result, fields) => {
+      if (!err) {
+        res.render("detail", { title: "테스트 게시판" });
+      } else {
+        throw err;
+      }
+    });
+    connection.release();
+  });
 });
 
 app.listen(3000);
