@@ -1,33 +1,59 @@
-<h1>[{{title}}] 글 작성</h1>
-<div>
-  <!-- ❷ mode에 따라 폼이 반영되는 URL 변경 -->
-  <form name="boardForm" method="post" action="/write">
+<div class="container mt-4">
+  <h1>글 작성 페이지</h1>
 
-    <!-- ❹ 수정 모드인 경우 제목을 넣어줍니다.  -->
-    <div>
-      <label>제목</label>
-      <input type="text" name="title" placeholder="제목을 넣어주세요" value="" />
+  <form method="post" action="/write">
+    <div class="form-group">
+      <label for="postTitle">제목</label>
+      <input
+        type="text"
+        name="title"
+        class="form-control"
+        id="postTitle"
+        placeholder="제목을 입력하세요"
+        required
+      />
     </div>
-    <!-- ❺ 수정 모드인 경우 이름을 넣어줍니다.  -->
-    <div>
-      <label>이름</label>
-      <input type="text" name="writer" placeholder="이름을 넣어주세요" value="" />
+    <div class="form-group">
+      <label for="postAuthor">작성자</label>
+      <input
+        type="text"
+        name="writer"
+        class="form-control"
+        id="postAuthor"
+        placeholder="작성자를 입력하세요"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="postPassword">비밀번호</label>
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        id="postPassword"
+        placeholder="비밀번호를 입력하세요"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="postContent">내용</label>
+      <textarea
+        class="form-control"
+        name="content"
+        id="postContent"
+        rows="5"
+        placeholder="내용을 입력하세요"
+        required
+      ></textarea>
+    </div>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary">저장</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        onclick="location.href='/'"
+      >취소</button>
     </div>
 
-    <div>
-      <label>비밀번호</label>
-      <input type="password" name="password" placeholder="비밀번호를 넣어주세요" />
-    </div>
-
-    <!-- ❻ 수정 모드 인 경우 본문에 내용을 채워줍니다. -->
-    <div>
-      <label>본문을 입력하세요</label><br />
-      <textarea placeholder="본문" name="content" cols="50" rows="10"></textarea>
-      <br />
-      <!-- 버튼영역 -->
-      <div>
-        <button type="submit">저장</button>
-        <button type="button" onclick="location.href='/'">취소</button>
-      </div>
   </form>
 </div>

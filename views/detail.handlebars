@@ -1,66 +1,80 @@
-<h1>{{title}}</h1>
-<h2 class="text-xl">{{post.title}}</h2>
-<!-- 제목 -->
-<div>
-  작성자 :
-  <b>{{post.writer}}</b>
-</div>
-<div>
-  조회수 :
-  {{post.hits}}
-  | 작성일시 :
-  {{post.createdDt}}
-  <!-- 조회수 및 작성일 -->
-  <button onclick="modifyPost()">수정</button>
-  <button onclick="deletePost()">삭제</button>
-</div>
-
-<div>
-  <pre>{{post.content}}</pre>
-  <!-- 본문 내용 -->
-</div>
-
-<section>
-  <div>
-    <h3>3개의 댓글이 있습니다.</h3>
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      {{post.title}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">작성자: {{post.writer}}</h5>
+      <p class="card-text">조회수:
+        {{post.hits}}
+        | 작성일시:
+        {{post.createdDt}}</p>
+      <p class="card-text">{{post.content}}</p>
+    </div>
   </div>
 
-  <form method="post" action="/write-comment">
-    <div>
-      <div>
-        <input type="text" name="name" placeholder="이름" />
-        <input type="password" name="password" placeholder="비밀번호" />
-      </div>
-      <div>
-        <textarea
-          cols="40"
-          rows="3"
-          name="comment"
-          placeholder="댓글을 입력해주세요."
-        ></textarea>
-        <br /><br /><button>댓글 쓰기</button>
+  <div class="mt-4">
+    <h4>댓글</h4>
+    <div class="card mb-2">
+      <div class="card-body">
+        <p class="card-text">댓글 내용이 여기에 들어갑니다.</p>
+        <p class="card-text"><small class="text-muted">작성자: 댓글작성자 |
+            작성일시: 2023-08-30</small></p>
       </div>
     </div>
-  </form>
-</section>
+    <div class="card mb-2">
+      <div class="card-body">
+        <p class="card-text">다른 댓글 내용이 여기에 들어갑니다.</p>
+        <p class="card-text"><small class="text-muted">작성자: 다른댓글작성자 |
+            작성일시: 2023-08-30</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <form>
+          <div class="form-row">
+            <div class="col-md-6 mb-2">
+              <label for="commentAuthor">댓글 작성자</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                id="commentAuthor"
+                placeholder="댓글 작성자"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-2">
+              <label for="commentPassword">비밀번호</label>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                id="commentPassword"
+                placeholder="비밀번호"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-10 mb-2">
+              <label for="commentContent">댓글 내용</label>
+              <textarea
+                class="form-control"
+                id="commentContent"
+                name="comment"
+                rows="2"
+                placeholder="댓글 내용을 입력하세요"
+                required
+              ></textarea>
+            </div>
+            <div class="col-md-2 mt-5">
+              <button type="submit" class="btn btn-primary btn-block">댓글 작성</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 
-<section>
-  <div>
-    <div>
-      작성자 :
-      <b>이지환2</b>
-    </div>
-    <div>
-      작성일시 : 2023.08.29.
-      <button onclick="deleteComment('1')">삭제</button>
-    </div>
   </div>
-  <div>
-    <pre>댓글</pre>
-  </div>
-</section>
-<footer>
-  <div>
-    <a href="/">목록으로</a>
-  </div>
-</footer>
+</div>
