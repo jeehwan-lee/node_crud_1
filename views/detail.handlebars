@@ -1,19 +1,22 @@
 <h1>{{title}}</h1>
-<h2 class="text-xl">제목입니다.</h2>
+<h2 class="text-xl">{{post.title}}</h2>
 <!-- 제목 -->
 <div>
   작성자 :
-  <b>이지환</b>
+  <b>{{post.writer}}</b>
 </div>
 <div>
-  조회수 : 999 | 작성일시 : 2023.08.29.
+  조회수 :
+  {{post.hits}}
+  | 작성일시 :
+  {{post.createdDt}}
   <!-- 조회수 및 작성일 -->
   <button onclick="modifyPost()">수정</button>
   <button onclick="deletePost()">삭제</button>
 </div>
 
 <div>
-  <pre>본문 내용이 들어가는 자리.</pre>
+  <pre>{{post.content}}</pre>
   <!-- 본문 내용 -->
 </div>
 
@@ -53,7 +56,7 @@
     </div>
   </div>
   <div>
-    <pre>{{comment}}</pre>
+    <pre>댓글</pre>
   </div>
 </section>
 <footer>

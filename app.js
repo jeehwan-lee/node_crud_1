@@ -30,7 +30,7 @@ app.get("/write", (req, res) => {
 });
 
 app.get("/detail/:id", async (req, res) => {
-  const sql = `UPDATE post SET hits='2' WHERE id = 1`;
+  const sql = `UPDATE post SET hits=hits+1 WHERE id = 1`;
 
   mysql.getConnection((err, connection) => {
     connection.query(sql, (err, result, fields) => {
@@ -47,7 +47,8 @@ app.get("/detail/:id", async (req, res) => {
   mysql.getConnection((err, connection) => {
     connection.query(sql2, (err, result, fields) => {
       if (!err) {
-        res.render("detail", { title: "게시판", posts: result });
+        console.log(result);
+        res.render("detail", { title: "상세페이지", post: result[0] });
       } else {
         throw err;
       }
