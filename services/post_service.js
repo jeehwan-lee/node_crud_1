@@ -39,7 +39,7 @@ const writePost = async (req, res) => {
   mysql.getConnection((err, connection) => {
     connection.query(sql, (err, result, fields) => {
       if (!err) {
-        res.redirect(`/detail/${result.insertId}`);
+        res.redirect(`/post/detail/${result.insertId}`);
       } else {
         throw err;
       }
