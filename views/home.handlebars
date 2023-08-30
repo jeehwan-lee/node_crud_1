@@ -1,11 +1,20 @@
 <main class="container mx-auto my-4">
   <section class="bg-white shadow-md rounded p-4">
-    <h2 class="text-xl font-semibold mb-4">글 목록</h2>
+    <div class="flex w-full items-center justify-center">
+      <div class="flex w-9/12 items-center justify-between pb-3">
+        <h2 class="text-xl font-semibold mb-4">게시글</h2>
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          <a href="/post/write"> 글쓰기</a>
+        </button>
+      </div>
+    </div>
 
     <div class="flex items-center justify-center mb-4">
       <input
         type="text"
-        class="w-9/12 px-4 py-2 border rounded-xl"
+        class="w-9/12 px-4 py-2 border border-gray-300 focus:outline-none rounded-xl"
         placeholder="검색어를 입력하세요..."
       />
     </div>
