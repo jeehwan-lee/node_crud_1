@@ -8,9 +8,7 @@ router.use((req, res, next) => {
 
 router.get("/", postController.getAllPosts);
 
-router.get("/write", (req, res) => {
-  res.render("write", { title: "글 작성 페이지", mode: "c" });
-});
+router.get("/write", postController.writePostPage);
 
 router.post("/write", postController.writePost);
 
