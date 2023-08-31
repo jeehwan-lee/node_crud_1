@@ -36,7 +36,7 @@ const getPostDesc = (req, res) => {
 
 const writePost = async (req, res) => {
   const post = req.body;
-  const sql = `INSERT INTO post (title, writer, password, content, hits) values('${post.title}', '${post.writer}', ${post.password}, '${post.content}', 0)`;
+  const sql = `INSERT INTO post (title, writer, password, content, hits, hearts) values('${post.title}', '${post.writer}', ${post.password}, '${post.content}', 0, 0)`;
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {
@@ -70,9 +70,27 @@ const updatePostHits = (req, res) => {
   });
 };
 
+const updatePostHearts = (req, res) => {
+  const sql = `UPDATE post SET hearts=hearts+1 WHERE id = ${req.body.id}`;
+
+  return new Promise((resolve, reject) => {
+    mysql.getConnection((err, connection) => {
+      connection.query(sql, (err, result, fields) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+      connection.release();
+    });
+  });
+};
+
 module.exports = {
   getAllPosts,
   getPostDesc,
   writePost,
   updatePostHits,
+  updatePostHearts,
 };

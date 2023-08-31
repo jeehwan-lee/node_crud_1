@@ -12,6 +12,8 @@ router.get("/write", postController.writePostPage);
 
 router.post("/write", postController.writePost);
 
+router.post("/updateHearts", postController.updatePostHearts);
+
 router.get("/detail/:id", postController.getPostDesc);
 
 module.exports = router;
