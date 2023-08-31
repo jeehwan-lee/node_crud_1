@@ -1,16 +1,17 @@
 const postService = require("../services/post_service");
 
 const getAllPosts = async (req, res) => {
-  console.log("herer");
   const allPost = await postService.getAllPosts(req, res);
-  console.log(allPost);
-  console.log("hello");
   res.render("home", { title: "게시판", posts: allPost });
 };
 
 const getPostDesc = async (req, res) => {
-  postService.updatePostHits(req, res);
-  postService.getPostDesc(req, res);
+  const result = await postService.updatePostHits(req, res);
+
+  if (result) {
+    const post = await postService.getPostDesc(req, res);
+    res.render("detail", { title: "상세페이지", post: post });
+  }
 };
 
 const writePostPage = async (req, res) => {
@@ -18,7 +19,11 @@ const writePostPage = async (req, res) => {
 };
 
 const writePost = async (req, res) => {
-  postService.writePost(req, res);
+  const result = await postService.writePost(req, res);
+
+  if (result) {
+    res.redirect(`/post/detail/${result.insertId}`);
+  }
 };
 
 module.exports = {
