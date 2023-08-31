@@ -4,14 +4,16 @@ const getAllPosts = async (req, res) => {
   const sql = "SELECT * FROM post";
 
   mysql.getConnection((err, connection) => {
-    connection.query(sql, (err, result, fields) => {
-      if (!err) {
-        res.render("home", { title: "게시판", posts: result });
-      } else {
-        throw err;
-      }
+    return new Promise((resolve, reject) => {
+      connection.query(sql, (err, result, fields) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+      connection.release();
     });
-    connection.release();
   });
 };
 

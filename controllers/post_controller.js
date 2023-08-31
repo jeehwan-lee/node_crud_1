@@ -1,7 +1,11 @@
 const postService = require("../services/post_service");
 
 const getAllPosts = async (req, res) => {
-  postService.getAllPosts(req, res);
+  console.log("herer");
+  const allPost = await postService.getAllPosts(req, res);
+  console.log(allPost);
+  console.log("hello");
+  res.render("home", { title: "게시판", posts: allPost });
 };
 
 const getPostDesc = async (req, res) => {
