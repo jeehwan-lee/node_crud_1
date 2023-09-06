@@ -10,7 +10,8 @@ const getPostDesc = async (req, res) => {
 
   if (result) {
     const post = await postService.getPostDesc(req, res);
-    res.render("detail", { title: "상세페이지", post: post });
+    // console.log(post);
+    res.render("detail", { title: "상세페이지", postDesc: post[0] });
   }
 };
 
