@@ -3,7 +3,6 @@ const reflyService = require("../services/refly_service");
 
 const getAllPosts = async (req, res) => {
   const allPost = await postService.getAllPosts(req, res);
-  console.log(allPost);
   res.render("home", { title: "게시판", posts: allPost });
 };
 

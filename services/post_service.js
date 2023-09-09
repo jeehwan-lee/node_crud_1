@@ -19,7 +19,7 @@ const getAllPosts = (req, res) => {
 };
 
 const getPostDesc = (req, res) => {
-  const sql2 = `SELECT * FROM post where id = ${req.params.id}`;
+  const sql2 = `SELECT post.*, (SELECT COUNT(*) FROM refly WHERE refly.postId = post.id) AS reflyCount FROM post where id = ${req.params.id}`;
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {
