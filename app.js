@@ -6,8 +6,7 @@ const mysql = require("./db/db");
 require("dotenv").config();
 
 const postRouter = require("./routes/post");
-
-const postService = require("./services/post_service");
+const reflyRouter = require("./routes/refly");
 
 // 앱 세팅
 app.use(express.json());
@@ -37,6 +36,8 @@ app.get("/", (req, res) => {
 */
 
 app.use("/post", postRouter);
+
+app.use("/refly", reflyRouter);
 
 app.listen(process.env.PORT, () => {
   console.log("server is running on port 3000");

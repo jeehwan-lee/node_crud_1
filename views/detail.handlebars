@@ -35,9 +35,10 @@
       <div class="rounded-xl border p-5 shadow-md w-9/12 bg-gray-100">
 
         <h3 class="text-lg font-semibold mb-2">Add a Comment</h3>
-        <form action="#" method="post">
+        <form method="post" action="/refly/write">
           <div class="flex flex-wrap -mx-3 mb-4 mt-4">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <input type="hidden" name="postId" value={{postDesc.id}} />
               <label
                 class="block uppercase tracking-wide text-xl font-semibold mb-2"
                 for="grid-name"
