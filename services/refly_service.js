@@ -18,6 +18,24 @@ const writeRefly = async (req, res) => {
   });
 };
 
+const allReflyInPost = async (req, res) => {
+  const sql2 = `SELECT * FROM refly where postId = ${req.params.id}`;
+
+  return new Promise((resolve, reject) => {
+    mysql.getConnection((err, connection) => {
+      connection.query(sql2, (err, result) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+      connection.release();
+    });
+  });
+};
+
 module.exports = {
   writeRefly,
+  allReflyInPost,
 };

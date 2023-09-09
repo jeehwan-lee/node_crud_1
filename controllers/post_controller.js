@@ -1,4 +1,5 @@
 const postService = require("../services/post_service");
+const reflyService = require("../services/refly_service");
 
 const getAllPosts = async (req, res) => {
   const allPost = await postService.getAllPosts(req, res);
@@ -10,8 +11,12 @@ const getPostDesc = async (req, res) => {
 
   if (result) {
     const post = await postService.getPostDesc(req, res);
-    console.log(post);
-    res.render("detail", { title: "상세페이지", postDesc: post[0] });
+    const allRefly = await reflyService.allReflyInPost(req, res);
+    res.render("detail", {
+      title: "상세페이지",
+      postDesc: post[0],
+      allRefly: allRefly,
+    });
   }
 };
 
