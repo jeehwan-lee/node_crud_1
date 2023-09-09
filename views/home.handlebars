@@ -24,26 +24,22 @@
       <div class="flex items-center justify-center mb-6">
         <div class="rounded-xl border p-5 shadow-md w-9/12 bg-white">
           <div class="flex w-full items-center justify-between border-b pb-3">
-            <div class="flex items-center space-x-3">
-
-              <div class="text-lg font-bold text-slate-700">{{writer}}</div>
-            </div>
-            <div class="flex items-center space-x-8">
-              <div class="text-xs text-neutral-500">{{createdDt}}</div>
-            </div>
-          </div>
-
-          <div class="mt-4 mb-6">
-            <div class="mb-3 text-xl font-bold">
+            <div class="text-xl font-bold">
               <a
                 href="/post/detail/{{id}}"
                 class="text-blue-500 font-semibold"
               >{{title}}</a>
             </div>
-            <div class="text-sm text-neutral-600">{{content}}</div>
+            <div class="flex items-center space-x-8">
+              <p class="text-gray-600">Posted on
+                {{createdDt}}
+                by
+                {{writer}}</p>
+              <p>{{comment}}</p>
+            </div>
           </div>
 
-          <div>
+          <div class="mt-4">
             <div class="flex items-center justify-between text-slate-500">
               <div class="flex space-x-4 md:space-x-4">
                 <div
