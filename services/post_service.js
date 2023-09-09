@@ -1,7 +1,8 @@
 const mysql = require("../db/db");
 
 const getAllPosts = (req, res) => {
-  const sql = "SELECT * FROM post";
+  const sql =
+    "SELECT post.*, (SELECT COUNT(*) FROM refly WHERE refly.postId = post.id) AS reflyCount FROM post";
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {
