@@ -1,80 +1,94 @@
 <main class="container mx-auto mt-5">
   <section class="mb-5">
-    <div class="bg-white p-4 rounded-md shadow overflow-x-auto">
+    <div class="bg-white py-8 px-4 rounded-md shadow overflow-x-auto">
 
-      <form class="flex justify-center">
-        <table class="w-9/12 mb-4 mt-4">
-          <tr class="border-t-2 border-b-2 border-gray-300">
-            <td class="text-gray-700 text-xl pl-4 font-semibold">작성자</td>
-            <td>
-              <input
-                class="appearance-none block w-full border rounded-md py-3 px-4 mt-4 mb-4 leading-tight focus:outline-none"
-                id="grid-name"
-                type="text"
-                name="writer"
-                placeholder="작성자"
-              />
-            </td>
-          </tr>
-          <tr class="border-b-2 border-gray-300">
-            <td class="text-gray-700 text-xl pl-4 font-semibold">비밀번호</td>
-            <td>
-              <input
-                class="appearance-none block w-full border rounded-md py-3 px-4 mt-4 mb-4 leading-tight focus:outline-none"
-                id="grid-password"
-                type="password"
-                name="password"
-                placeholder="비밀번호"
-              />
-            </td>
-          </tr>
-          <tr class="border-b-2 border-gray-300">
-            <td class="w-1/5 text-gray-700 text-xl pl-4 font-semibold">제목</td>
-            <td class="w-4/5">
-              <input
-                class="appearance-none block w-full border rounded-md py-3 px-4 mt-4 mb-4 leading-tight focus:outline-none"
-                id="grid-title"
-                type="text"
-                name="title"
-                placeholder="제목을 입력하세요"
-              />
-            </td>
-          </tr>
-          <tr class="border-b-2 border-gray-300 h-80">
-            <td class="text-gray-700 text-xl pl-4 font-semibold">내용</td>
-            <td>
-              <textarea
-                id="content"
-                rows="12"
-                name="content"
-                class="resize-none block p-2.5 w-full border rounded-md mt-4 mb-4 border border-gray-300 focus:outline-none"
-                placeholder="내용을 입력하세요"
-              ></textarea>
-            </td>
-          </tr>
-        </table>
+      <div class="flex justify-center">
+        <p
+          class="w-9/12 text-xl font-semibold py-4 text-center bg-gray-500 text-white"
+        >게시글 작성</p>
+      </div>
 
-      </form>
-
-      <div class="flex justify-center mb-4 mt-4">
-        <div class="w-9/12 flex justify-end">
-          <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-3"
-            type="submit"
-          >
-            등록
-          </button>
-
-          <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            type="button"
-            onclick="location.href='/post'"
-          >
-            취소
-          </button>
+      <form
+        class="flex justify-center flex-col"
+        method="post"
+        action="/post/write"
+      >
+        <div class="flex justify-center">
+          <table class="w-9/12 mb-4 mt-4">
+            <tr class="border-b-2 border-gray-300">
+              <td class="text-gray-700 text-xl pl-4 font-semibold">작성자</td>
+              <td>
+                <input
+                  class="appearance-none block w-full border border-gray-300 rounded-md py-3 px-4 mt-4 mb-4 leading-tight focus:outline-none"
+                  id="grid-name"
+                  type="text"
+                  name="writer"
+                  placeholder="작성자"
+                />
+              </td>
+            </tr>
+            <tr class="border-b-2 border-gray-300">
+              <td class="text-gray-700 text-xl pl-4 font-semibold">비밀번호</td>
+              <td>
+                <input
+                  class="appearance-none block w-full border border-gray-300 rounded-md py-3 px-4 mt-4 mb-4 leading-tight focus:outline-none"
+                  id="grid-password"
+                  type="password"
+                  name="password"
+                  placeholder="비밀번호"
+                />
+              </td>
+            </tr>
+            <tr class="border-b-2 border-gray-300">
+              <td
+                class="w-1/5 text-gray-700 text-xl pl-4 font-semibold"
+              >제목</td>
+              <td class="w-4/5">
+                <input
+                  class="appearance-none block w-full border border-gray-300 rounded-md py-3 px-4 mt-4 mb-4 leading-tight focus:outline-none"
+                  id="grid-title"
+                  type="text"
+                  name="title"
+                  placeholder="제목을 입력하세요"
+                />
+              </td>
+            </tr>
+            <tr class="border-b-2 border-gray-300 h-76">
+              <td class="text-gray-700 text-xl pl-4 font-semibold">내용</td>
+              <td>
+                <textarea
+                  id="content"
+                  rows="10"
+                  name="content"
+                  class="resize-none block p-2.5 w-full border border-gray-300 rounded-md mt-4 mb-4 border border-gray-300 focus:outline-none"
+                  placeholder="내용을 입력하세요"
+                ></textarea>
+              </td>
+            </tr>
+          </table>
         </div>
 
-      </div>
+        <div class="flex justify-center mb-2">
+          <div class="w-9/12 flex justify-end">
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-3"
+              type="submit"
+            >
+              등록
+            </button>
+
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              type="button"
+              onclick="location.href='/post'"
+            >
+              취소
+            </button>
+          </div>
+
+        </div>
+
+      </form>
     </div>
   </section>
 </main>
