@@ -43,7 +43,11 @@ const getPostsCount = (req, res) => {
 };
 
 const searchPosts = (req, res) => {
-  const sql = `SELECT post.*, (SELECT COUNT(*) FROM refly WHERE refly.postId = post.id) AS reflyCount FROM post WHERE title LIKE '%${req.query.searchParam}%'`;
+  const page = req.query.page ? req.query.page : 1;
+
+  const sql = `SELECT post.*, (SELECT COUNT(*) FROM refly WHERE refly.postId = post.id) AS reflyCount FROM post WHERE title LIKE '%${
+    req.query.searchParam
+  }%' ORDER BY id DESC LIMIT ${(page - 1) * 10}, ${page * 10}`;
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {
