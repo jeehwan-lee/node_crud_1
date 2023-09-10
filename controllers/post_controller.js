@@ -6,6 +6,13 @@ const getAllPosts = async (req, res) => {
   res.render("home", { title: "게시판", posts: allPost });
 };
 
+const searchPosts = async (req, res) => {
+  const allPost = await postService.searchPosts(req, res);
+  //return res.render("home", { title: "게시판", posts: allPost });
+
+  res.redirect("localhost:3000/post/detail/1");
+};
+
 const getPostDesc = async (req, res) => {
   const result = await postService.updatePostHits(req, res);
 
@@ -39,6 +46,7 @@ const writePost = async (req, res) => {
 
 module.exports = {
   getAllPosts,
+  searchPosts,
   getPostDesc,
   writePost,
   writePostPage,

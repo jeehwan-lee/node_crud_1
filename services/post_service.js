@@ -18,6 +18,23 @@ const getAllPosts = (req, res) => {
   });
 };
 
+const searchPosts = (req, res) => {
+  const sql = `SELECT post.*, (SELECT COUNT(*) FROM refly WHERE refly.postId = post.id) AS reflyCount FROM post WHERE title LIKE '%${req.body.searchParam}%'`;
+
+  return new Promise((resolve, reject) => {
+    mysql.getConnection((err, connection) => {
+      connection.query(sql, (err, result, fields) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+      connection.release();
+    });
+  });
+};
+
 const getPostDesc = (req, res) => {
   const sql2 = `SELECT post.*, (SELECT COUNT(*) FROM refly WHERE refly.postId = post.id) AS reflyCount FROM post where id = ${req.params.id}`;
 
@@ -90,6 +107,7 @@ const updatePostHearts = (req, res) => {
 
 module.exports = {
   getAllPosts,
+  searchPosts,
   getPostDesc,
   writePost,
   updatePostHits,
