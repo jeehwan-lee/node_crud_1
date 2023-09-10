@@ -1,6 +1,6 @@
 <main class="container mx-auto mt-5">
   <section class="mb-5">
-    <div class="bg-white p-4 rounded-md shadow overflow-x-auto">
+    <div class="bg-white py-4 px-10 rounded-md shadow overflow-x-auto">
       <div class="flex justify-between mb-6">
         <button
           id="addPostButton"
@@ -51,7 +51,7 @@
               <div class="text-center">작성자</div>
             </th>
             <th class="w-16 py-2 px-4 bg-gray-500 text-white">
-              <div class="text-center">날짜</div>
+              <div class="text-center">작성일</div>
             </th>
             <th class="w-8 py-2 px-4 bg-gray-500 text-white">
               <div class="text-center">좋아요</div>
@@ -63,12 +63,15 @@
         </thead>
         <tbody id="postList">
           {{#each posts}}
-            <tr class="border-b-2 border-gray-300">
+            <tr
+              class="h-16 border-b-2 border-gray-300 cursor-pointer hover:bg-gray-200"
+              onclick="handleClickPost({{id}})"
+            >
               <td class="py-2 px-4 text-center">{{id}}</td>
               <td class="py-2 px-4">
-                <a href="/post/detail/{{id}}">{{title}}
-                  <span class="text-gray-400">[{{reflyCount}}]</span>
-                </a></td>
+                {{title}}
+                <span class="text-gray-400">[{{reflyCount}}]</span>
+              </td>
               <td class="py-2 px-4 text-center">{{writer}}</td>
               <td class="py-2 px-4 text-center">{{simpleDateString
                   createdDt
@@ -102,6 +105,7 @@
   }; const searchHandler = (e) => { if(e.keyCode === 13) {
   fetch('http://localhost:3000/post/searchPosts', { method : "POST", headers:
   {"Content-Type": "application/json" }, body: JSON.stringify({searchParam:
-  e.target.value}) }) } };
+  e.target.value}) }) } }; const handleClickPost = (postId) => {
+  window.location.href = `/post/detail/${postId}`; };
 
 </script>

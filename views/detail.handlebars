@@ -35,12 +35,11 @@
     {{/with}}
     <!-- 댓글 목록 -->
     <div>
-      <h5 class="text-xl font-semibold">댓글
-        {{#if allRefly}}
+      {{#if allRefly}}
+        <h5 class="text-xl font-semibold">댓글
           <span class="text-gray-500">[{{postDesc.reflyCount}}]</span>
-        {{/if}}
-
-      </h5>
+        </h5>
+      {{/if}}
       <div class="border-b-2 border-gray-500 mt-2 mb-2"></div>
       <ul>
         {{#each allRefly}}
