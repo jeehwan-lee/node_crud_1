@@ -1,4 +1,4 @@
-const mysql = require("../db/db");
+const mysql = require("../config/db");
 
 const writeRefly = async (req, res) => {
   const refly = req.body;

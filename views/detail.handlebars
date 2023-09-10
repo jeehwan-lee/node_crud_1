@@ -6,8 +6,8 @@
       <div class="mb-8">
         <h3 class="text-3xl font-semibold">{{title}}</h3>
         <p class="text-gray-600 text-sm mt-2">{{writer}}
-          | 작성일:
-          {{createdDt}}</p>
+          |
+          {{fullDateString createdDt}}</p>
       </div>
       <div class="mb-8">
         <p class="text-gray-700 text-lg leading-relaxed">
@@ -48,7 +48,9 @@
             <div class="flex flex-col">
               <div class="flex justify-between">
                 <h4 class="text-gray-700 font-semibold">{{writer}}</h4>
-                <p class="text-gray-600 text-sm">작성일: {{createdDt}} </p>
+                <p class="text-gray-600 text-sm">
+                  {{fullDateString createdDt}}
+                </p>
               </div>
               <div>
                 <p class="text-gray-700 mt-2 leading-relaxed">{{comment}}</p>

@@ -1,4 +1,4 @@
-const mysql = require("../db/db");
+const mysql = require("../config/db");
 
 const getAllPosts = (req, res) => {
   const sql =

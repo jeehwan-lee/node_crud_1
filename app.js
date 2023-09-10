@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
-const mysql = require("./db/db");
+const mysql = require("./config/db");
 require("dotenv").config();
 
 const postRouter = require("./routes/post");
@@ -12,7 +12,12 @@ const reflyRouter = require("./routes/refly");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.engine("handlebars", handlebars.engine());
+app.engine(
+  "handlebars",
+  handlebars.create({
+    helpers: require("./config/handlebars_helpers"),
+  }).engine
+);
 app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
 
