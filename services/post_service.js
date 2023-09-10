@@ -19,7 +19,7 @@ const getAllPosts = (req, res) => {
 };
 
 const searchPosts = (req, res) => {
-  const sql = `SELECT post.*, (SELECT COUNT(*) FROM refly WHERE refly.postId = post.id) AS reflyCount FROM post WHERE title LIKE '%${req.body.searchParam}%'`;
+  const sql = `SELECT post.*, (SELECT COUNT(*) FROM refly WHERE refly.postId = post.id) AS reflyCount FROM post WHERE title LIKE '%${req.query.searchParam}%'`;
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {

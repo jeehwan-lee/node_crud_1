@@ -102,10 +102,9 @@
   const updateHearts = (postId) => { window.location.reload();
   fetch('http://localhost:3000/post/updateHearts', { method : "POST", headers:
   {"Content-Type": "application/json" }, body: JSON.stringify({id: postId}) });
-  }; const searchHandler = (e) => { if(e.keyCode === 13) {
-  fetch('http://localhost:3000/post/searchPosts', { method : "POST", headers:
-  {"Content-Type": "application/json" }, body: JSON.stringify({searchParam:
-  e.target.value}) }) } }; const handleClickPost = (postId) => {
-  window.location.href = `/post/detail/${postId}`; };
+  }; const searchHandler = (e) => { if(e.keyCode === 13) { window.location.href
+  = `/post/searchPosts?searchParam=${e.target.value}`; } }; const
+  handleClickPost = (postId) => { window.location.href =
+  `/post/detail/${postId}`; };
 
 </script>

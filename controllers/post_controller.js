@@ -7,10 +7,8 @@ const getAllPosts = async (req, res) => {
 };
 
 const searchPosts = async (req, res) => {
-  const allPost = await postService.searchPosts(req, res);
-  //return res.render("home", { title: "게시판", posts: allPost });
-
-  res.redirect("localhost:3000/post/detail/1");
+  const searchResult = await postService.searchPosts(req, res);
+  res.render("home", { title: "게시판", posts: searchResult });
 };
 
 const getPostDesc = async (req, res) => {
