@@ -12,16 +12,20 @@ const searchPosts = async (req, res) => {
 };
 
 const getPostDesc = async (req, res) => {
+  const post = await postService.getPostDesc(req, res);
+  const allRefly = await reflyService.allReflyInPost(req, res);
+  res.render("detail", {
+    title: "상세페이지",
+    postDesc: post[0],
+    allRefly: allRefly,
+  });
+};
+
+const updatePostHits = async (req, res) => {
   const result = await postService.updatePostHits(req, res);
 
   if (result) {
-    const post = await postService.getPostDesc(req, res);
-    const allRefly = await reflyService.allReflyInPost(req, res);
-    res.render("detail", {
-      title: "상세페이지",
-      postDesc: post[0],
-      allRefly: allRefly,
-    });
+    res.redirect(`/post/detail/${req.params.id}`);
   }
 };
 
@@ -53,4 +57,5 @@ module.exports = {
   writePost,
   writePostPage,
   updatePostHearts,
+  updatePostHits,
 };
