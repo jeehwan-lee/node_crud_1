@@ -3,12 +3,36 @@ const reflyService = require("../services/refly_service");
 
 const getAllPosts = async (req, res) => {
   const allPost = await postService.getAllPosts(req, res);
-  res.render("home", { title: "게시판", posts: allPost });
+  const postsCount = await postService.getPostsCount(req, res);
+
+  var tempArr = [];
+
+  for (var i = 0; i < postsCount[0].postsCount / 10; i++) {
+    tempArr.push(i + 1);
+  }
+
+  res.render("home", {
+    title: "게시판",
+    posts: allPost,
+    postsCount: tempArr,
+  });
 };
 
 const searchPosts = async (req, res) => {
   const searchResult = await postService.searchPosts(req, res);
-  res.render("home", { title: "게시판", posts: searchResult });
+  const postsCount = await postService.getPostsCount(req, res);
+
+  var tempArr = [];
+
+  for (var i = 0; i < postsCount[0].postsCount / 10; i++) {
+    tempArr.push(i + 1);
+  }
+
+  res.render("home", {
+    title: "게시판",
+    posts: searchResult,
+    postsCount: tempArr,
+  });
 };
 
 const getPostDesc = async (req, res) => {
