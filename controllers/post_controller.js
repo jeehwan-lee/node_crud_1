@@ -27,6 +27,10 @@ const getPostDesc = async (req, res) => {
 
 const updatePostHearts = async (req, res) => {
   const result = await postService.updatePostHearts(req, res);
+
+  if (result) {
+    res.redirect(`/post/detail/${req.params.id}`);
+  }
 };
 
 const writePostPage = async (req, res) => {

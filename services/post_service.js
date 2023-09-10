@@ -89,7 +89,7 @@ const updatePostHits = (req, res) => {
 };
 
 const updatePostHearts = (req, res) => {
-  const sql = `UPDATE post SET hearts=hearts+1 WHERE id = ${req.body.id}`;
+  const sql = `UPDATE post SET hearts=hearts+1 WHERE id = ${req.params.id}`;
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {
