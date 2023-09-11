@@ -4,7 +4,7 @@ const writeRefly = async (req, res) => {
   const result = await reflyService.writeRefly(req, res);
 
   if (result) {
-    res.redirect(`/post/detail/${req.body.postId}`);
+    res.json(result);
   }
 };
 
