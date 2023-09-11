@@ -67,10 +67,9 @@ const writePostPage = async (req, res) => {
 
 const writePost = async (req, res) => {
   const result = await postService.writePost(req, res);
-  console.log(result);
 
   if (result) {
-    res.redirect(`/post/detail/${result.insertId}`);
+    res.json(result);
   }
 };
 

@@ -1,3 +1,5 @@
+<script src="/write.js"></script>
+
 <main class="container mx-auto mt-5">
   <section class="mb-5">
     <div class="bg-white py-8 px-16 rounded-md shadow overflow-x-auto">
@@ -8,11 +10,7 @@
         >게시글 작성</p>
       </div>
 
-      <form
-        class="flex justify-center flex-col"
-        method="post"
-        action="/post/write"
-      >
+      <form class="flex justify-center flex-col">
         <div class="flex justify-center">
           <table class="w-full mb-4 mt-4">
             <tr class="border-b-2 border-gray-300">
@@ -20,11 +18,15 @@
               <td>
                 <input
                   class="appearance-none block w-full border border-gray-300 rounded-md py-3 px-4 mt-4 mb-4 leading-tight focus:outline-none"
-                  id="grid-name"
+                  id="writer"
                   type="text"
                   name="writer"
                   placeholder="작성자"
                 />
+                <p
+                  id="writerError"
+                  class="hidden text-red-500 text-s italic mb-4"
+                >작성자를 입력하세요.</p>
               </td>
             </tr>
             <tr class="border-b-2 border-gray-300">
@@ -32,11 +34,15 @@
               <td>
                 <input
                   class="appearance-none block w-full border border-gray-300 rounded-md py-3 px-4 mt-4 mb-4 leading-tight focus:outline-none"
-                  id="grid-password"
+                  id="password"
                   type="password"
                   name="password"
                   placeholder="비밀번호"
                 />
+                <p
+                  id="passwordError"
+                  class="hidden text-red-500 text-s italic mb-4"
+                >비밀번호를 입력하세요.</p>
               </td>
             </tr>
             <tr class="border-b-2 border-gray-300">
@@ -46,11 +52,15 @@
               <td class="w-4/5">
                 <input
                   class="appearance-none block w-full border border-gray-300 rounded-md py-3 px-4 mt-4 mb-4 leading-tight focus:outline-none"
-                  id="grid-title"
+                  id="title"
                   type="text"
                   name="title"
                   placeholder="제목을 입력하세요"
                 />
+                <p
+                  id="titleError"
+                  class="hidden text-red-500 text-s italic mb-4"
+                >제목을 입력하세요.</p>
               </td>
             </tr>
             <tr class="border-b-2 border-gray-300 h-76">
@@ -63,6 +73,10 @@
                   class="resize-none block p-2.5 w-full border border-gray-300 rounded-md mt-4 mb-4 border border-gray-300 focus:outline-none"
                   placeholder="내용을 입력하세요"
                 ></textarea>
+                <p
+                  id="contentError"
+                  class="hidden text-red-500 text-s italic mb-4"
+                >내용을 입력하세요.</p>
               </td>
             </tr>
           </table>
@@ -72,7 +86,8 @@
           <div class="w-full flex justify-end">
             <button
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-3"
-              type="submit"
+              type="button"
+              onclick="submitPost()"
             >
               등록
             </button>
