@@ -1,3 +1,4 @@
+<script src="/detail.js" /></script>
 <main class="container mx-auto my-4">
 
   <section class="bg-white shadow-md rounded py-8 px-10">
@@ -17,7 +18,7 @@
         <div class="flex space-x-4 md:space-x-4">
           <div
             class="flex items-center transition hover:text-slate-600"
-            onclick="updateHearts({{id}});"
+            onclick="updateHearts({{id}})"
           >
             <i class="fas fa-heart text-red-500 mr-2 cursor-pointer"></i>
             <span>{{hearts}}</span>
@@ -110,6 +111,7 @@
       >목록
       </button>
       <button
+        onclick="test"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
       >수정
       </button>
@@ -120,8 +122,3 @@
     </div>
   </section>
 </main>
-
-<script>
-  const updateHearts = (postId) => { window.location.href =
-  `/post/updateHearts/${postId}`; };
-</script>

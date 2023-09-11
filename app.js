@@ -11,6 +11,7 @@ const reflyRouter = require("./routes/refly");
 // 앱 세팅
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 app.engine(
   "handlebars",
