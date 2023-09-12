@@ -35,7 +35,43 @@ const allReflyInPost = async (req, res) => {
   });
 };
 
+const reflyPasswordCheck = async (req, res) => {
+  const sql = `SELECT * FROM refly WHERE id = ${req.params.id} AND password = ${req.body.password}`;
+
+  return new Promise((resolve, reject) => {
+    mysql.getConnection((err, connection) => {
+      connection.query(sql, (err, result, fields) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+      connection.release();
+    });
+  });
+};
+
+const deleteRefly = async (req, res) => {
+  const sql = `DELETE FROM refly WHERE id = ${req.params.id}`;
+
+  return new Promise((resolve, reject) => {
+    mysql.getConnection((err, connection) => {
+      connection.query(sql, (err, result, fields) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+      connection.release();
+    });
+  });
+};
+
 module.exports = {
   writeRefly,
   allReflyInPost,
+  reflyPasswordCheck,
+  deleteRefly,
 };
