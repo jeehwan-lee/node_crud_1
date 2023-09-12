@@ -133,6 +133,40 @@ const updatePostHearts = (req, res) => {
   });
 };
 
+const postPasswordCheck = async (req, res) => {
+  const sql = `SELECT * FROM post WHERE id = ${req.params.id} AND password = ${req.body.password}`;
+
+  return new Promise((resolve, reject) => {
+    mysql.getConnection((err, connection) => {
+      connection.query(sql, (err, result, fields) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+      connection.release();
+    });
+  });
+};
+
+const deletePost = async (req, res) => {
+  const sql = `DELETE FROM post WHERE id = ${req.params.id}`;
+
+  return new Promise((resolve, reject) => {
+    mysql.getConnection((err, connection) => {
+      connection.query(sql, (err, result, fields) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+      connection.release();
+    });
+  });
+};
+
 module.exports = {
   getAllPosts,
   getPostsCount,
@@ -141,4 +175,6 @@ module.exports = {
   writePost,
   updatePostHits,
   updatePostHearts,
+  postPasswordCheck,
+  deletePost,
 };

@@ -62,3 +62,45 @@ const submitRefly = (postId) => {
     });
   }
 };
+
+const deleteBtn = () => {
+  const modal = document.getElementById("modal");
+  modal.classList.remove("hidden");
+};
+
+const modalSubmit = (postId) => {
+  const passwordValidationText = document.getElementById("passwordValidation");
+  const password = document.getElementById("modalPassword").value;
+
+  passwordValidationText.classList.add("hidden");
+
+  if (password.trim().length === 0) {
+    passwordValidationText.classList.remove("hidden");
+    return;
+  }
+
+  fetch(`/post/postPasswordCheck/${postId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      password: password,
+    }),
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      if (data.result) {
+        passwordValidationText.classList.add("hidden");
+        window.location.href = `/post/delete/${postId}`;
+      } else {
+        passwordValidationText.classList.remove("hidden");
+      }
+    });
+};
+const closeModal = () => {
+  const modal = document.getElementById("modal");
+  modal.classList.add("hidden");
+};

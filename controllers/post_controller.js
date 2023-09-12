@@ -73,6 +73,24 @@ const writePost = async (req, res) => {
   }
 };
 
+const postPasswordCheck = async (req, res) => {
+  const result = await postService.postPasswordCheck(req, res);
+
+  if (result.length == 0) {
+    res.json({ result: false });
+  } else {
+    res.json({ result: true });
+  }
+};
+
+const deletePost = async (req, res) => {
+  const result = await postService.deletePost(req, res);
+
+  if (result) {
+    res.redirect(`/post/`);
+  }
+};
+
 module.exports = {
   getAllPosts,
   searchPosts,
@@ -81,4 +99,6 @@ module.exports = {
   writePostPage,
   updatePostHearts,
   updatePostHits,
+  postPasswordCheck,
+  deletePost,
 };

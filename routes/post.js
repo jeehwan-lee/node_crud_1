@@ -15,4 +15,8 @@ router.get("/updateHits/:id", postController.updatePostHits);
 
 router.get("/detail/:id", postController.getPostDesc);
 
+router.post("/postPasswordCheck/:id", postController.postPasswordCheck);
+
+router.get("/delete/:id", postController.deletePost);
+
 module.exports = router;
