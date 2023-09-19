@@ -69,7 +69,9 @@ const modifyPost = () => {
       }),
     }).then((res) => {
       console.log(res);
-      window.location.href = "/post";
+      window.location.href = `/post/detail/${
+        document.getElementById("postId").value
+      }`;
     });
   }
 };

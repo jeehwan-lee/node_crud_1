@@ -77,6 +77,10 @@ const deleteBtn = (btnType, id) => {
     modalSubmitBtn.addEventListener("click", () => {
       modalPostDelete(id);
     });
+  } else if (btnType === "postModify") {
+    modalSubmitBtn.addEventListener("click", () => {
+      modalPostModify(id);
+    });
   }
 };
 
@@ -140,6 +144,39 @@ const modalReflyDelete = (reflyId) => {
       if (data.result) {
         passwordValidationText.classList.add("hidden");
         window.location.href = `/refly/delete/${reflyId}`;
+      } else {
+        passwordValidationText.classList.remove("hidden");
+      }
+    });
+};
+
+const modalPostModify = (postId) => {
+  const passwordValidationText = document.getElementById("passwordValidation");
+  const password = document.getElementById("modalPassword").value;
+
+  passwordValidationText.classList.add("hidden");
+
+  if (password.trim().length === 0) {
+    passwordValidationText.classList.remove("hidden");
+    return;
+  }
+
+  fetch(`/post/postPasswordCheck/${postId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      password: password,
+    }),
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      if (data.result) {
+        passwordValidationText.classList.add("hidden");
+        window.location.href = `/post/modify/${postId}`;
       } else {
         passwordValidationText.classList.remove("hidden");
       }
