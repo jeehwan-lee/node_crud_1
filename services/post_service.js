@@ -98,6 +98,24 @@ const writePost = async (req, res) => {
   });
 };
 
+const modifyPost = (req, res) => {
+  const sql = `UPDATE post SET title='${req.body.title}', writer='${req.body.writer}', password=${req.body.password}, content='${req.body.content}' WHERE id = ${req.body.postId}`;
+
+  return new Promise((resolve, reject) => {
+    mysql.getConnection((err, connection) => {
+      connection.query(sql, (err, result) => {
+        if (!err) {
+          //console.log(result);
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+      connection.release();
+    });
+  });
+};
+
 const updatePostHits = (req, res) => {
   const sql = `UPDATE post SET hits=hits+1 WHERE id = ${req.params.id}`;
 
@@ -173,6 +191,7 @@ module.exports = {
   searchPosts,
   getPostDesc,
   writePost,
+  modifyPost,
   updatePostHits,
   updatePostHearts,
   postPasswordCheck,

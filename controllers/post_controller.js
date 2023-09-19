@@ -62,12 +62,24 @@ const updatePostHearts = async (req, res) => {
 };
 
 const writePostPage = async (req, res) => {
-  res.render("write", { title: "글 작성 페이지", mode: "c" });
+  res.render("write", { title: "글 작성 페이지" });
 };
 
 const writePost = async (req, res) => {
   const result = await postService.writePost(req, res);
 
+  if (result) {
+    res.json(result);
+  }
+};
+
+const modifyPostPage = async (req, res) => {
+  const post = await postService.getPostDesc(req, res);
+  res.render("modify", { title: "글 수정 페이지", postDesc: post[0] });
+};
+
+const modifyPost = async (req, res) => {
+  const result = await postService.modifyPost(req, res);
   if (result) {
     res.json(result);
   }
@@ -97,6 +109,8 @@ module.exports = {
   getPostDesc,
   writePost,
   writePostPage,
+  modifyPostPage,
+  modifyPost,
   updatePostHearts,
   updatePostHits,
   postPasswordCheck,

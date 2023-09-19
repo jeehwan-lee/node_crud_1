@@ -9,6 +9,10 @@ router.get("/write", postController.writePostPage);
 
 router.post("/write", postController.writePost);
 
+router.get("/modify/:id", postController.modifyPostPage);
+
+router.post("/modify", postController.modifyPost);
+
 router.get("/updateHearts/:id", postController.updatePostHearts);
 
 router.get("/updateHits/:id", postController.updatePostHits);
