@@ -23,23 +23,9 @@ app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
 
 // 라우팅
-/*
 app.get("/", (req, res) => {
-  const sql = "SELECT * FROM post";
-
-  mysql.getConnection((err, connection) => {
-    connection.query(sql, (err, result, fields) => {
-      if (!err) {
-        console.log(result);
-        res.render("home", { title: "게시판", posts: result });
-      } else {
-        throw err;
-      }
-    });
-    connection.release();
-  });
+  res.redirect(`/post`);
 });
-*/
 
 app.use("/post", postRouter);
 
