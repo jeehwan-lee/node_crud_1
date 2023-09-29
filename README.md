@@ -92,32 +92,55 @@
 <details>
 <summary>메인 페이지</summary>
 
-![image](![image](https://github.com/jeehwan-lee/node_crud_1/assets/26796099/de7fac70-3aa1-45c2-a1f5-befefe1ea426)
-)
+![image](https://github.com/jeehwan-lee/springboot-crud-board/assets/26796099/98b6351b-80aa-4559-99c7-36a854776977)
+
 
 </details>
 
 <details>
 <summary>게시글 등록 페이지</summary>
 
-![image](![image](https://github.com/jeehwan-lee/node_crud_1/assets/26796099/b4c79c21-ba58-4e10-b734-fa03e746c4d4)
-)
-)
+![image](https://github.com/jeehwan-lee/springboot-crud-board/assets/26796099/fd35c16a-f837-4544-a551-9883c6454c39)
 
 </details>
 
 <details>
 <summary>게시글 상세 페이지</summary>
 
-![image](![image](https://github.com/jeehwan-lee/node_crud_1/assets/26796099/a37692a4-f179-4e1c-8b0b-ef61bfddaf1a)
-)
-)
-
+![image](https://github.com/jeehwan-lee/springboot-crud-board/assets/26796099/4c5b4a10-bc68-4494-be34-e061d132f191)
 </details>
 
 ## 구조 및 설계
 
 ### 1. 프로젝트 구조
+
+프로젝트의 구조는 다음과 같이 post와 refly에 대한 router로 분리하고 각각의 controller와 service를 통해 
+
+클라이언트로부터 받은 요청을 처리하고 views 디렉토리에서 클라이언트에 필요한 페이지를 전송하는 방식으로 구조를 설계했습니다.
+
+```bash
+├── app.js
+├── config
+│   ├── db.js
+│   └── handlebars_helpers.js
+├── controllers
+│   ├── post_controller.js
+│   └── refly_controller.js
+├── routes
+│   ├── post.js
+│   └── refly.js
+├── services
+│   ├── post_service.js
+│   └── refly_service.js
+├── views
+│   ├── layouts
+│       └── main.handlebars
+│   ├── detail.handlebars
+│   ├── home.handlebars
+│   ├── modify.handlebars
+│   └── write.handlebars
+└── public
+``` 
 
 ### 2. DB 설계
 
