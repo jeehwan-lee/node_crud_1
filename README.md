@@ -100,7 +100,7 @@
 <details>
 <summary>게시글 등록 페이지</summary>
 
-![image](https://github.com/jeehwan-lee/springboot-crud-board/assets/26796099/fd35c16a-f837-4544-a551-9883c6454c39)
+![image](https://github.com/jeehwan-lee/node_crud_1/assets/26796099/447e5b27-6559-40f1-afa7-0dfc7399fa5b)
 
 </details>
 
