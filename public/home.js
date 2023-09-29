@@ -1,7 +1,6 @@
-const searchHandler = (e) => {
-  if (e.keyCode === 13) {
-    window.location.href = `/post?searchParam=${e.target.value}`;
-  }
+const searchHandler = () => {
+  const searchParam = document.getElementById("searchInput").value;
+  window.location.href = `/post?searchParam=${searchParam}`;
 };
 
 const handleClickPost = (postId) => {
