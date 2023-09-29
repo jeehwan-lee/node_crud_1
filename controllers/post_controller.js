@@ -4,6 +4,7 @@ const reflyService = require("../services/refly_service");
 const getAllPosts = async (req, res) => {
   const allPost = await postService.getAllPosts(req, res);
   const postsCount = await postService.getPostsCount(req, res);
+  const page = req.query.page ? req.query.page : 1;
 
   var tempArr = [];
 
@@ -15,6 +16,7 @@ const getAllPosts = async (req, res) => {
     title: "게시판",
     posts: allPost,
     postsCount: tempArr,
+    page: page,
   });
 };
 
