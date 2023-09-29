@@ -18,23 +18,6 @@ const getAllPosts = async (req, res) => {
   });
 };
 
-const searchPosts = async (req, res) => {
-  const searchResult = await postService.searchPosts(req, res);
-  const postsCount = await postService.getPostsCount(req, res);
-
-  var tempArr = [];
-
-  for (var i = 0; i < postsCount[0].postsCount / 10; i++) {
-    tempArr.push(i + 1);
-  }
-
-  res.render("home", {
-    title: "게시판",
-    posts: searchResult,
-    postsCount: tempArr,
-  });
-};
-
 const getPostDesc = async (req, res) => {
   const post = await postService.getPostDesc(req, res);
   const allRefly = await reflyService.allReflyInPost(req, res);
@@ -105,7 +88,6 @@ const deletePost = async (req, res) => {
 
 module.exports = {
   getAllPosts,
-  searchPosts,
   getPostDesc,
   writePost,
   writePostPage,

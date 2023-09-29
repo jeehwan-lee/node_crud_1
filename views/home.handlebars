@@ -92,7 +92,7 @@
           {{#each postsCount}}
             <button
               class="bg-blue-500 text-white px-3 py-1 rounded-md"
-              onclick="window.location.href = `/post/?page={{this}}`;"
+              onclick="paginationHandler({{this}})"
             >{{this}}</button>
           {{/each}}
         </div>

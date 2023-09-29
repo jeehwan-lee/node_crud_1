@@ -2,9 +2,10 @@ const mysql = require("../config/db");
 
 const getAllPosts = (req, res) => {
   const page = req.query.page ? req.query.page : 1;
-  const sql = `SELECT post.*, (SELECT COUNT(*) FROM refly WHERE refly.postId = post.id) AS reflyCount FROM post ORDER BY id DESC LIMIT ${
+  const searchParam = req.query.searchParam ? req.query.searchParam : "";
+  const sql = `SELECT post.*, (SELECT COUNT(*) FROM refly WHERE refly.postId = post.id) AS reflyCount FROM post WHERE title LIKE '%${searchParam}%' ORDER BY id DESC LIMIT ${
     (page - 1) * 10
-  }, ${page * 10}`;
+  }, 10`;
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {
@@ -21,33 +22,8 @@ const getAllPosts = (req, res) => {
 };
 
 const getPostsCount = (req, res) => {
-  var sql;
-  if (req.query.searchParam) {
-    sql = `SELECT COUNT(*) AS postsCount FROM post WHERE title LIKE '%${req.query.searchParam}%'`;
-  } else {
-    sql = `SELECT COUNT(*) AS postsCount FROM post`;
-  }
-
-  return new Promise((resolve, reject) => {
-    mysql.getConnection((err, connection) => {
-      connection.query(sql, (err, result, fields) => {
-        if (!err) {
-          resolve(result);
-        } else {
-          reject(err);
-        }
-      });
-      connection.release();
-    });
-  });
-};
-
-const searchPosts = (req, res) => {
-  const page = req.query.page ? req.query.page : 1;
-
-  const sql = `SELECT post.*, (SELECT COUNT(*) FROM refly WHERE refly.postId = post.id) AS reflyCount FROM post WHERE title LIKE '%${
-    req.query.searchParam
-  }%' ORDER BY id DESC LIMIT ${(page - 1) * 10}, ${page * 10}`;
+  const searchParam = req.query.searchParam ? req.query.searchParam : "";
+  const sql = `SELECT COUNT(*) AS postsCount FROM post WHERE title LIKE '%${searchParam}%'`;
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {
@@ -188,7 +164,6 @@ const deletePost = async (req, res) => {
 module.exports = {
   getAllPosts,
   getPostsCount,
-  searchPosts,
   getPostDesc,
   writePost,
   modifyPost,
