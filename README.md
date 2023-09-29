@@ -87,14 +87,60 @@
 
     - MySQL
 
-### 4. 실행화면 <br/><br/><br/><br/>
+### 4. 실행화면
+
+<details>
+<summary>메인 페이지</summary>
+
+![image](![image](https://github.com/jeehwan-lee/node_crud_1/assets/26796099/de7fac70-3aa1-45c2-a1f5-befefe1ea426)
+)
+
+</details>
+
+<details>
+<summary>게시글 등록 페이지</summary>
+
+![image](![image](https://github.com/jeehwan-lee/node_crud_1/assets/26796099/b4c79c21-ba58-4e10-b734-fa03e746c4d4)
+)
+)
+
+</details>
+
+<details>
+<summary>게시글 상세 페이지</summary>
+
+![image](![image](https://github.com/jeehwan-lee/node_crud_1/assets/26796099/a37692a4-f179-4e1c-8b0b-ef61bfddaf1a)
+)
+)
+
+</details>
 
 ## 구조 및 설계
 
 ### 1. 프로젝트 구조
 
-### 2. DB 설계 <br/><br/><br/><br/>
+### 2. DB 설계
 
-## 추후 업데이트
+- POST 테이블
 
-### 4. 패스워드 암호화
+|칼럼명|타 입|Null|Key|설 명|
+|:---:|:---:|:---:|:---:|:---:|
+|id|int|No|Primary Key|id|
+|title|varchar(45)|Yes|-|제목|
+|content|varchar(200)|Yes|-|내용|
+|writer|varchar(45)|Yes|-|작성자|
+|password|varchar(45)|Yes|-|비밀번호|
+|hits|int|Yes|-|조회수|
+|hearts|int|Yes|-|좋아요수|
+|create_date|datetime|No|-|생성일자|
+
+- REFLY 테이블
+
+|칼럼명|타 입|Null|Key|설 명|
+|:---:|:---:|:---:|:---:|:---:|
+|id|int|No|Primary Key|id|
+|postId|int|No|Foreign Key|외래키|
+|comment|varchar(200)|Yes|-|댓글내용|
+|writer|varchar(45)|Yes|-|작성자|
+|password|varchar(45)|Yes|-|비밀번호|
+|create_date|datetime|No|-|생성일자|
