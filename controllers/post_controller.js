@@ -26,7 +26,7 @@ const getPostDesc = async (req, res) => {
   const allRefly = await reflyService.allReflyInPost(req, res);
   var files = [];
   if (post[0].fileGrId) {
-    files = await fileService.getFiles(post[0].fileGrId);
+    files = await fileService.getFileGroup(post[0].fileGrId);
   }
 
   res.render("detail", {

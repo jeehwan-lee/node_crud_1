@@ -12,6 +12,12 @@ const uploadFiles = async (req, res) => {
   res.json({ fileGrId: fileGrId });
 };
 
+const downloadFile = async (req, res) => {
+  const file = await fileService.getFile(req.query.fileId);
+  res.download(file[0].savedPath);
+};
+
 module.exports = {
   uploadFiles,
+  downloadFile,
 };

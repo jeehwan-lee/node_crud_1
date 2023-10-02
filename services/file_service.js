@@ -1,6 +1,21 @@
 const mysql = require("../config/db");
 
-const getFiles = async (fileGrId) => {
+const getFile = async (fileId) => {
+  const sql = `SELECT * FROM files WHERE fileId = '${fileId}'`;
+  return new Promise((resolve, reject) => {
+    mysql.getConnection((err, connection) => {
+      connection.query(sql, (err, result) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      });
+      connection.release();
+    });
+  });
+};
+const getFileGroup = async (fileGrId) => {
   const sql = `SELECT * FROM files WHERE fileGrId = '${fileGrId}'`;
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {
@@ -33,6 +48,7 @@ const writeFilesDesc = async (fileGrId, fileId, file) => {
 };
 
 module.exports = {
-  getFiles,
+  getFile,
+  getFileGroup,
   writeFilesDesc,
 };

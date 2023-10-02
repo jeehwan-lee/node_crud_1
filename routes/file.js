@@ -24,4 +24,6 @@ const upload = multer({
 
 router.post("/upload", upload.array("files", 5), fileController.uploadFiles);
 
+router.get("/download", fileController.downloadFile);
+
 module.exports = router;
