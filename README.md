@@ -39,9 +39,13 @@
 
   - 하나의 게시글에는 최대 5개까지 파일 첨부
 
+  - 게시글 수정 시 첨부파일도 수정 가능 (구현중)
+
   - 게시글 삭제 및 삭제 시 비밀번호 입력 필수
 
   - 게시글에 대한 좋아요 기능
+
+  - 게시글 제목 옆에 댓글수와 첨부파일이 있을 경우 첨부파일 표시 (구현중)
 
   - 게시글 세부페이지에서 좋아요수, 댓글수, 조회수 보여주기
 
@@ -173,12 +177,11 @@
 |  password   | varchar(45)  | Yes  |      -      | 비밀번호 |
 | create_date |   datetime   |  No  |      -      | 생성일자 |
 
-
 - FILES 테이블
 
-|   칼럼명    |    타 입     | Null |     Key     |  설 명   |
-| :---------: | :----------: | :--: | :---------: | :------: |
-|  fileGrId   | varchar(100) | Yes  | Primary Key | 파일그룹 |
-|   fileId    | varchar(100) | Yes  | Primary Key |  파일ID  |
-|   fileName  | varchar(100) | Yes  |      -      | 파일이름 |
-|  savedPath  | varchar(100) | Yes  |      -      | 저장경로 |
+|  칼럼명   |    타 입     | Null |     Key     |  설 명   |
+| :-------: | :----------: | :--: | :---------: | :------: |
+| fileGrId  | varchar(100) | Yes  | Primary Key | 파일그룹 |
+|  fileId   | varchar(100) | Yes  | Primary Key |  파일ID  |
+| fileName  | varchar(100) | Yes  |      -      | 파일이름 |
+| savedPath | varchar(100) | Yes  |      -      | 저장경로 |
