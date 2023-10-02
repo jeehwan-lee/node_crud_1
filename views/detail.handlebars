@@ -38,25 +38,26 @@
         </div>
       {{/with}}
     </div>
-    <div
-      class="block w-full border border-gray-300 rounded-md py-3 px-4 mb-4"
-      onclick="handleFilesClick()"
-    >
-      <div class="text-gray-400">첨부파일</div>
-      <ul id="selectedFilesContainer">
-        {{#each files}}
-          <li class="mt-2" id="selectedFileNo${i}">
-            <div class="flex">
-              <i class="fa-regular fa-file py-1"></i>
-              <div
-                class="ml-2 cursor-pointer"
-                onclick="window.location.href = `/file/download?fileId=${{fileId}}`"
-              >{{fileName}}</div>
-            </div>
-          </li>
-        {{/each}}
-      </ul>
-    </div>
+    {{#if files}}
+      <div
+        class="block w-full border border-gray-300 rounded-md py-3 px-4 mb-4"
+      >
+        <div class="text-gray-400">첨부파일</div>
+        <ul id="selectedFilesContainer">
+          {{#each files}}
+            <li class="mt-2" id="selectedFileNo${i}">
+              <div class="flex">
+                <i class="fa-regular fa-file py-1"></i>
+                <div
+                  class="ml-2 cursor-pointer"
+                  onclick="window.location.href = `/file/download?fileId=${{fileId}}`"
+                >{{fileName}}</div>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
     <!-- 댓글 목록 -->
     <div>
       {{#if allRefly}}
