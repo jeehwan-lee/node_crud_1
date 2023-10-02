@@ -1,7 +1,15 @@
 const router = require("express").Router();
 const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
 
 const fileController = require("../controllers/file_controller");
+
+try {
+  fs.readdirSync("files");
+} catch (error) {
+  fs.mkdirSync("files");
+}
 
 const upload = multer({
   storage: multer.diskStorage({
