@@ -13,32 +13,6 @@
             |
             {{fullDateString createdDt}}</p>
         </div>
-        <div
-          class="block w-full border border-gray-300 rounded-md py-3 px-4 mb-4"
-          onclick="handleFilesClick()"
-        >
-          <div class="text-gray-400">첨부파일</div>
-          <ul id="selectedFilesContainer">
-            <li class="mt-2" id="selectedFileNo${i}">
-              <div class="flex">
-                <i class="fa-regular fa-file py-1"></i>
-                <p class="ml-2">ddd.txt</p>
-              </div>
-            </li>
-            <li class="mt-2" id="selectedFileNo${i}">
-              <div class="flex">
-                <i class="fa-regular fa-file py-1"></i>
-                <p class="ml-2">ddd.txt</p>
-              </div>
-            </li>
-            <li class="mt-2" id="selectedFileNo${i}">
-              <div class="flex">
-                <i class="fa-regular fa-file py-1"></i>
-                <p class="ml-2">ddd.txt</p>
-              </div>
-            </li>
-          </ul>
-        </div>
         <div class="mb-8">
           <p class="text-gray-700 text-lg leading-relaxed">
             {{content}}</p>
@@ -63,6 +37,25 @@
           </div>
         </div>
       {{/with}}
+    </div>
+    <div
+      class="block w-full border border-gray-300 rounded-md py-3 px-4 mb-4"
+      onclick="handleFilesClick()"
+    >
+      <div class="text-gray-400">첨부파일</div>
+      <ul id="selectedFilesContainer">
+        {{#each files}}
+          <li class="mt-2" id="selectedFileNo${i}">
+            <div class="flex">
+              <i class="fa-regular fa-file py-1"></i>
+              <div
+                class="ml-2 cursor-pointer"
+                onclick="window.location.href = `/file/download?fileId=${{fileId}}`"
+              >{{fileName}}</div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
     </div>
     <!-- 댓글 목록 -->
     <div>

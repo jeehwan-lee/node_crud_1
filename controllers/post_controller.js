@@ -1,5 +1,6 @@
 const postService = require("../services/post_service");
 const reflyService = require("../services/refly_service");
+const fileService = require("../services/file_service");
 
 const getAllPosts = async (req, res) => {
   const allPost = await postService.getAllPosts(req, res);
@@ -23,10 +24,16 @@ const getAllPosts = async (req, res) => {
 const getPostDesc = async (req, res) => {
   const post = await postService.getPostDesc(req, res);
   const allRefly = await reflyService.allReflyInPost(req, res);
+  var files = [];
+  if (post[0].fileGrId) {
+    files = await fileService.getFiles(post[0].fileGrId);
+  }
+
   res.render("detail", {
     title: "상세페이지",
     postDesc: post[0],
     allRefly: allRefly,
+    files: files,
   });
 };
 
