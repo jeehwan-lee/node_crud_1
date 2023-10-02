@@ -7,6 +7,7 @@ require("dotenv").config();
 
 const postRouter = require("./routes/post");
 const reflyRouter = require("./routes/refly");
+const fileRouter = require("./routes/file");
 
 // 앱 세팅
 app.use(express.json());
@@ -28,8 +29,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/post", postRouter);
-
 app.use("/refly", reflyRouter);
+app.use("/file", fileRouter);
 
 app.listen(process.env.PORT, () => {
   console.log("server is running on port 3000");

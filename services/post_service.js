@@ -58,7 +58,7 @@ const getPostDesc = (req, res) => {
 
 const writePost = async (req, res) => {
   const post = req.body;
-  const sql = `INSERT INTO post (title, writer, password, content, hits, hearts) values('${post.title}', '${post.writer}', ${post.password}, '${post.content}', 0, 0)`;
+  const sql = `INSERT INTO post (title, writer, password, content, hits, hearts, fileGrId) values('${post.title}', '${post.writer}', ${post.password}, '${post.content}', 0, 0, '${post.fileGrId}')`;
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {

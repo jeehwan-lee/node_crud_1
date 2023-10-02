@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const multer = require("multer");
+
 const postController = require("../controllers/post_controller");
 
 router.get("/", postController.getAllPosts);

@@ -62,31 +62,32 @@ const submitPost = () => {
     formData.append("files", selectedFiles[i]);
   }
 
-  fetch("/post/file", {
-    method: "POST",
-    body: formData,
-  })
-    .then((res) => {
-      if (!res.ok) throw new Error(res.status);
-      return res.json();
-    })
-    .then((data) => console.log(data));
-
   if (validationCheck()) {
-    fetch("/post/write", {
+    fetch("/file/upload", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        writer: document.getElementById("writer").value,
-        password: document.getElementById("password").value,
-        title: document.getElementById("title").value,
-        content: document.getElementById("content").value,
-      }),
-    }).then(() => {
-      window.location.href = "/post";
-    });
+      body: formData,
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(res.status);
+        return res.json();
+      })
+      .then((data) => {
+        fetch("/post/write", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            writer: document.getElementById("writer").value,
+            password: document.getElementById("password").value,
+            title: document.getElementById("title").value,
+            content: document.getElementById("content").value,
+            fileGrId: data.fileGrId,
+          }),
+        }).then(() => {
+          window.location.href = "/post";
+        });
+      });
   }
 };
 
