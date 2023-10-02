@@ -160,6 +160,7 @@
 |    hits     |     int      | Yes  |      -      |  조회수  |
 |   hearts    |     int      | Yes  |      -      | 좋아요수 |
 | create_date |   datetime   |  No  |      -      | 생성일자 |
+|  fileGrId   | varchar(100) |  No  |      -      | 파일그룹 |
 
 - REFLY 테이블
 
@@ -171,3 +172,13 @@
 |   writer    | varchar(45)  | Yes  |      -      |  작성자  |
 |  password   | varchar(45)  | Yes  |      -      | 비밀번호 |
 | create_date |   datetime   |  No  |      -      | 생성일자 |
+
+
+- FILES 테이블
+
+|   칼럼명    |    타 입     | Null |     Key     |  설 명   |
+| :---------: | :----------: | :--: | :---------: | :------: |
+|  fileGrId   | varchar(100) | Yes  | Primary Key | 파일그룹 |
+|   fileId    | varchar(100) | Yes  | Primary Key |  파일ID  |
+|   fileName  | varchar(100) | Yes  |      -      | 파일이름 |
+|  savedPath  | varchar(100) | Yes  |      -      | 저장경로 |
