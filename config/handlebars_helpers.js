@@ -2,6 +2,9 @@ module.exports = {
   eq: (a, b) => {
     return a == b;
   },
+  gt: (a, b) => {
+    return a > b;
+  },
   simpleDateString: (dateString) => {
     var date = new Date(dateString);
 

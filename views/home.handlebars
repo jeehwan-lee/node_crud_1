@@ -77,7 +77,9 @@
               <td class="py-2 px-4 text-center">{{id}}</td>
               <td class="py-2 px-4">
                 {{title}}
-                <span class="text-gray-400">[{{reflyCount}}]</span>
+                {{#if (gt reflyCount 0)}}
+                  <span class="text-gray-400">[{{reflyCount}}]</span>
+                {{/if}}
                 {{#if fileGrId}}
                   <i class="fa-regular fa-file"></i>
                 {{/if}}
