@@ -35,7 +35,7 @@
 
 - 게시판
 
-  - 게시글 작성 및 사진첨부
+  - 게시글 작성 및 수정
 
   - 게시글 삭제 및 삭제 시 비밀번호 입력 필수
 
@@ -87,14 +87,85 @@
 
     - MySQL
 
-### 4. 실행화면 <br/><br/><br/><br/>
+### 4. 실행화면
+
+<details>
+<summary>메인 페이지</summary>
+
+![image](https://github.com/jeehwan-lee/springboot-crud-board/assets/26796099/98b6351b-80aa-4559-99c7-36a854776977)
+
+</details>
+
+<details>
+<summary>게시글 등록 페이지</summary>
+
+![image](https://github.com/jeehwan-lee/node_crud_1/assets/26796099/447e5b27-6559-40f1-afa7-0dfc7399fa5b)
+
+</details>
+
+<details>
+<summary>게시글 상세 페이지</summary>
+
+![image](https://github.com/jeehwan-lee/springboot-crud-board/assets/26796099/4c5b4a10-bc68-4494-be34-e061d132f191)
+
+</details>
 
 ## 구조 및 설계
 
 ### 1. 프로젝트 구조
 
-### 2. DB 설계 <br/><br/><br/><br/>
+프로젝트의는 다음과 같이 post와 refly에 대한 router로 분리하고 각각의 controller와 service를 통해
 
-## 추후 업데이트
+클라이언트로부터 받은 요청을 처리하고 views 디렉토리에서 클라이언트에 필요한 페이지를 전송하는 방식으로
 
-### 4. 패스워드 암호화
+구조를 설계했습니다.
+
+```bash
+├── app.js
+├── config
+│   ├── db.js
+│   └── handlebars_helpers.js
+├── controllers
+│   ├── post_controller.js
+│   └── refly_controller.js
+├── routes
+│   ├── post.js
+│   └── refly.js
+├── services
+│   ├── post_service.js
+│   └── refly_service.js
+├── views
+│   ├── layouts
+│       └── main.handlebars
+│   ├── detail.handlebars
+│   ├── home.handlebars
+│   ├── modify.handlebars
+│   └── write.handlebars
+└── public
+```
+
+### 2. DB 설계
+
+- POST 테이블
+
+|   칼럼명    |    타 입     | Null |     Key     |  설 명   |
+| :---------: | :----------: | :--: | :---------: | :------: |
+|     id      |     int      |  No  | Primary Key |    id    |
+|    title    | varchar(45)  | Yes  |      -      |   제목   |
+|   content   | varchar(200) | Yes  |      -      |   내용   |
+|   writer    | varchar(45)  | Yes  |      -      |  작성자  |
+|  password   | varchar(45)  | Yes  |      -      | 비밀번호 |
+|    hits     |     int      | Yes  |      -      |  조회수  |
+|   hearts    |     int      | Yes  |      -      | 좋아요수 |
+| create_date |   datetime   |  No  |      -      | 생성일자 |
+
+- REFLY 테이블
+
+|   칼럼명    |    타 입     | Null |     Key     |  설 명   |
+| :---------: | :----------: | :--: | :---------: | :------: |
+|     id      |     int      |  No  | Primary Key |    id    |
+|   postId    |     int      |  No  | Foreign Key |  외래키  |
+|   comment   | varchar(200) | Yes  |      -      | 댓글내용 |
+|   writer    | varchar(45)  | Yes  |      -      |  작성자  |
+|  password   | varchar(45)  | Yes  |      -      | 비밀번호 |
+| create_date |   datetime   |  No  |      -      | 생성일자 |
