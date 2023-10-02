@@ -63,31 +63,49 @@ const submitPost = () => {
   }
 
   if (validationCheck()) {
-    fetch("/file/upload", {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error(res.status);
-        return res.json();
-      })
-      .then((data) => {
-        fetch("/post/write", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            writer: document.getElementById("writer").value,
-            password: document.getElementById("password").value,
-            title: document.getElementById("title").value,
-            content: document.getElementById("content").value,
-            fileGrId: data.fileGrId,
-          }),
-        }).then(() => {
-          window.location.href = "/post";
-        });
+    if (selectedFiles.length === 0) {
+      fetch("/post/write", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          writer: document.getElementById("writer").value,
+          password: document.getElementById("password").value,
+          title: document.getElementById("title").value,
+          content: document.getElementById("content").value,
+        }),
+      }).then(() => {
+        window.location.href = "/post";
       });
+      return;
+    } else {
+      fetch("/file/upload", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error(res.status);
+          return res.json();
+        })
+        .then((data) => {
+          fetch("/post/write", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              writer: document.getElementById("writer").value,
+              password: document.getElementById("password").value,
+              title: document.getElementById("title").value,
+              content: document.getElementById("content").value,
+              fileGrId: data.fileGrId,
+            }),
+          }).then(() => {
+            window.location.href = "/post";
+          });
+        });
+    }
   }
 };
 
