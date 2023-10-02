@@ -20,6 +20,7 @@ const upload = multer({
       cb(null, Date.now() + "-" + file.originalname);
     },
   }),
+  limits: { fileSize: 5 * 1024 * 1024 },
 });
 
 router.post("/upload", upload.array("files", 5), fileController.uploadFiles);

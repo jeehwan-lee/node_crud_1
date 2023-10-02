@@ -98,8 +98,15 @@ const handleFilesClick = () => {
 
 const handleFilesChange = (event) => {
   if (event.target.files.length > 5) {
-    alert("파일은 5개까지만 업로드 가능합니다.");
+    alert("파일은 5개까지 첨부 가능합니다.");
     return;
+  }
+
+  for (var i = 0; i < event.target.files.length; i++) {
+    if (event.target.files[i].size > 5 * 1024 * 1024) {
+      alert("파일은 5MB 이하만 업로드 가능합니다.");
+      return;
+    }
   }
 
   selectedFiles = event.target.files;
