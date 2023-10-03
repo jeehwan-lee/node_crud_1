@@ -74,6 +74,7 @@ const submitPost = () => {
           password: document.getElementById("password").value,
           title: document.getElementById("title").value,
           content: document.getElementById("content").value,
+          fileGrId: "",
         }),
       }).then(() => {
         window.location.href = "/post";

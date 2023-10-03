@@ -80,7 +80,7 @@
                 {{#if (gt reflyCount 0)}}
                   <span class="text-gray-400">[{{reflyCount}}]</span>
                 {{/if}}
-                {{#if fileGrId}}
+                {{#if (gt fileGrId.length 0)}}
                   <i class="fa-regular fa-file"></i>
                 {{/if}}
               </td>

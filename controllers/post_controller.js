@@ -7,6 +7,8 @@ const getAllPosts = async (req, res) => {
   const postsCount = await postService.getPostsCount(req, res);
   const page = req.query.page ? req.query.page : 1;
 
+  console.log(allPost);
+
   var tempArr = [];
 
   for (var i = 0; i < postsCount[0].postsCount / 10; i++) {
