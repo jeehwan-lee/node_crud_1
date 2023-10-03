@@ -58,7 +58,7 @@ const getPostDesc = (req, res) => {
 
 const writePost = async (req, res) => {
   const post = req.body;
-  const sql = `INSERT INTO post (title, writer, password, content, hits, hearts, fileGrId) values('${post.title}', '${post.writer}', ${post.password}, '${post.content}', 0, 0, '${post.fileGrId}')`;
+  const sql = `INSERT INTO post (title, writer, password, content, hits, hearts, fileGrId) values('${post.title}', '${post.writer}', '${post.password}', '${post.content}', 0, 0, '${post.fileGrId}')`;
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {
@@ -75,7 +75,7 @@ const writePost = async (req, res) => {
 };
 
 const modifyPost = (req, res) => {
-  const sql = `UPDATE post SET title='${req.body.title}', writer='${req.body.writer}', password=${req.body.password}, content='${req.body.content}' WHERE id = ${req.body.postId}`;
+  const sql = `UPDATE post SET title='${req.body.title}', writer='${req.body.writer}', password='${req.body.password}', content='${req.body.content}' WHERE id = ${req.body.postId}`;
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {
@@ -128,7 +128,7 @@ const updatePostHearts = (req, res) => {
 };
 
 const postPasswordCheck = async (req, res) => {
-  const sql = `SELECT * FROM post WHERE id = ${req.params.id} AND password = ${req.body.password}`;
+  const sql = `SELECT * FROM post WHERE id = ${req.params.id} AND password = '${req.body.password}'`;
 
   return new Promise((resolve, reject) => {
     mysql.getConnection((err, connection) => {
