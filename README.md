@@ -181,7 +181,7 @@
 
 |  칼럼명   |    타 입     | Null |     Key     |  설 명   |
 | :-------: | :----------: | :--: | :---------: | :------: |
-| fileGrId  | varchar(100) | Yes  | Primary Key | 파일그룹 |
-|  fileId   | varchar(100) | Yes  | Primary Key |  파일ID  |
+| fileGrId  | varchar(100) |  No  | Primary Key | 파일그룹 |
+|  fileId   | varchar(100) |  No  | Primary Key |  파일ID  |
 | fileName  | varchar(100) | Yes  |      -      | 파일이름 |
 | savedPath | varchar(100) | Yes  |      -      | 저장경로 |
