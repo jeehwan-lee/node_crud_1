@@ -2,6 +2,8 @@
 
 > node.js express 라이브러리를 활용한 CRUD 기능을 구현한 게시판입니다.
 
+[게시판 바로가기](https://port-0-simple-board-with-node-js-euegqv2bln9ik0pf.sel5.cloudtype.app/)
+
 ## 목차
 
 - [들어가며](#들어가며)
