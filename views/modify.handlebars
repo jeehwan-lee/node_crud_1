@@ -86,6 +86,43 @@
                   >내용을 입력하세요.</p>
                 </td>
               </tr>
+              <tr class="border-b-2 border-gray-300 h-76">
+                <td
+                  class="text-gray-700 text-xl pl-4 font-semibold"
+                >첨부파일</td>
+                <td>
+                  <div
+                    class="block w-full border border-gray-300 rounded-md py-3 px-4 mt-4 mb-4"
+                    onclick="handleFilesClick()"
+                  >
+                    <div class="text-gray-400">5MB 이하의 파일을 5개까지 첨부할
+                      수 있습니다</div>
+
+                    <ul id="selectedFilesContainer">
+                      {{#each files}}
+                        <li class="mt-2" id="selectedFileNo${i}">
+                          <div
+                            class="justify-between flex py-2 px-4 border border-gray-300"
+                          >
+                            <p>{{fileName}}</p>
+                            <button onclick="deleteFileBtn(event)">
+                              <i class="fa-solid fa-xmark"></i>
+                            </button>
+                          </div>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </div>
+                  <input
+                    type="file"
+                    name="selectedFiles"
+                    id="selectedFilesInput"
+                    multiple="true"
+                    hidden="true"
+                    onchange="handleFilesChange(event)"
+                  />
+                </td>
+              </tr>
             </table>
           </div>
 

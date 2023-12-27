@@ -69,7 +69,14 @@ const writePost = async (req, res) => {
 
 const modifyPostPage = async (req, res) => {
   const post = await postService.getPostDesc(req, res);
-  res.render("modify", { title: "글 수정 페이지", postDesc: post[0] });
+  const files = await fileService.getFileGroup(post[0].fileGrId);
+
+  post[0]["files"] = files;
+
+  res.render("modify", {
+    title: "글 수정 페이지",
+    postDesc: post[0],
+  });
 };
 
 const modifyPost = async (req, res) => {
